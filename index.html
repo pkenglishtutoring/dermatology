@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Medical English for Dermatologists</title>
+    <style>
+        :root {
+            --primary: #005b9f;
+            --secondary: #00a8e8;
+            --bg: #f4f7f6;
+            --card: #ffffff;
+            --text: #2d3748;
+            --muted: #718096;
+            --success: #38a169;
+            --error: #e53e3e;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .note-box {
+            background: #ebf8ff;
+            border-left: 5px solid var(--secondary);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: #2c5282;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--text);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .objective {
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Exercise 1A: Matching */
+        .match-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .match-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .match-item p {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* Exercise 1B: Multiple Choice */
+        .mc-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border);
+        }
+        .mc-question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .mc-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-option:hover {
+            border-color: var(--secondary);
+            background: #ffffff;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        /* Exercise 2: Rephrasing */
+        .vignette {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border);
+        }
+        
+        .vignette:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .vignette-label {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .vignette-text {
+            margin-bottom: 15px;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #4a5568;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #00467a; }
+        .btn-secondary { background: #edf2f7; color: var(--text); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: #e2e8f0; }
+        .btn-success { background: var(--success); color: white; }
+
+        /* Feedback */
+        .feedback { margin-top: 10px; font-weight: 600; display: none; }
+        .feedback.correct { color: var(--success); display: block; }
+        .feedback.incorrect { color: var(--error); display: block; }
+
+        .hidden { display: none !important; }
+
+        .answer-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0fff4;
+            border: 1px solid #c6f6d5;
+            border-radius: 6px;
+            color: #22543d;
+            font-size: 0.95rem;
+        }
+
+        /* Print Styles */
+        @media print {
+            body { background: white; padding: 0; }
+            .no-print { display: none !important; }
+            .card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+            header { background: white; color: black; border: 2px solid black; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Advanced Medical English for Dermatologists</h1>
+        <p>Patient Communication, Empathy, and Medical Terminology</p>
+    </header>
+
+    <div class="note-box">
+        <strong>🩺 Medical English Note:</strong> In English dermatology, "Areata alopecia" is almost exclusively referred to as <strong>Alopecia areata</strong>. The exercises below use standard English phrasing to help you sound natural to native-speaking patients and colleagues.
+    </div>
+
+    <!-- EXERCISE 1 -->
+    <section class="card">
+        <h2>Exercise 1: Medical Jargon vs. Patient-Friendly Language</h2>
+        <p class="objective">Objective: Translate complex terminology into plain, empathetic English for patients.</p>
+        
+        <h3>Part A: Match the Definition to the Explanation</h3>
+        <p style="margin-bottom: 15px; color: var(--muted);">Select the best patient friendly explanation for each clinical definition.</p>
+        
+        <div class="match-grid" id="ex1-container">
+            <div class="match-item">
+                <p>1. An autoimmune condition causing rapid skin cell turnover and silvery scales.</p>
+                <select id="q1">
+                    <option value="">Select...</option>
+                    <option value="A">A. "This is a type of eczema that causes dry, intensely itchy skin..."</option>
+                    <option value="B">B. "This condition causes painful, boil-like lumps in areas where skin rubs..."</option>
+                    <option value="C">C. "This is an autoimmune condition where your immune system attacks hair follicles..."</option>
+                    <option value="D">D. "This is an abnormal growth of skin cells, often triggered by sun damage..."</option>
+                    <option value="E">E. "This is a purified protein we inject to relax the muscles..."</option>
+                    <option value="F">F. "Your skin cells are multiplying much faster than normal, creating thick, scaly patches."</option>
+                    <option value="G">G. "We use these injections, like hyaluronic acid, to lift your cheeks..."</option>
+                    <option value="H">H. "Instead of just filling a wrinkle, this treatment wakes up your skin's repair system..."</option>
+                    <option value="I">I. "This is a very common type of hair thinning caused by your genetics..."</option>
+                </select>
+                <div class="feedback" id="fb1"></div>
+            </div>
+
+            <div class="match-item">
+                <p>2. An injectable gel-like substance used to restore lost volume and smooth static wrinkles.</p>
+                <select id="q2">
+                    <option value="">Select...</option>
+                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option>
+                    <option value="G">G. "We use these injections, like hyaluronic acid, to lift your cheeks..."</option>
+                    <option value="H">H</option><option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb2"></div>
+            </div>
+
+            <div class="match-item">
+                <p>3. A neurotoxin injected into muscles to temporarily relax them and soften dynamic lines.</p>
+                <select id="q3">
+                    <option value="">Select...</option>
+                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                    <option value="E">E. "This is a purified protein we inject to relax the muscles..."</option>
+                    <option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb3"></div>
+            </div>
+
+            <div class="match-item">
+                <p>4. An injectable that triggers the body to produce its own natural collagen over several months.</p>
+                <select id="q4">
+                    <option value="">Select...</option>
+                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option>
+                    <option value="H">H. "Instead of just filling a wrinkle, this treatment wakes up your skin's repair system..."</option>
+                    <option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb4"></div>
+            </div>
+
+            <div class="match-item">
+                <p>5. Genetic hair thinning related to hormones, commonly known as male or female pattern baldness.</p>
+                <select id="q5">
+                    <option value="">Select...</option>
+                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option>
+                    <option value="I">I. "This is a very common type of hair thinning caused by your genetics..."</option>
+                </select>
+                <div class="feedback" id="fb5"></div>
+            </div>
+
+            <div class="match-item">
+                <p>6. A chronic inflammatory condition causing painful nodules and sinus tracts in intertriginous areas.</p>
+                <select id="q6">
+                    <option value="">Select...</option>
+                    <option value="A">A</option>
+                    <option value="B">B. "This condition causes painful, boil-like lumps in areas where skin rubs together..."</option>
+                    <option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb6"></div>
+            </div>
+
+            <div class="match-item">
+                <p>7. A chronic, pruritic inflammatory skin disease often associated with asthma and allergic rhinitis.</p>
+                <select id="q7">
+                    <option value="">Select...</option>
+                    <option value="A">A. "This is a type of eczema that causes dry, intensely itchy skin..."</option>
+                    <option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb7"></div>
+            </div>
+
+            <div class="match-item">
+                <p>8. Autoimmune, non-scarring hair loss presenting as well-defined patches.</p>
+                <select id="q8">
+                    <option value="">Select...</option>
+                    <option value="A">A</option><option value="B">B</option>
+                    <option value="C">C. "This is an autoimmune condition where your immune system attacks hair follicles..."</option>
+                    <option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb8"></div>
+            </div>
+
+            <div class="match-item">
+                <p>9. Malignant neoplasms of the skin, including BCC, SCC, and melanoma.</p>
+                <select id="q9">
+                    <option value="">Select...</option>
+                    <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+                    <option value="D">D. "This is an abnormal growth of skin cells, often triggered by sun damage..."</option>
+                    <option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option>
+                </select>
+                <div class="feedback" id="fb9"></div>
+            </div>
+        </div>
+        <button class="btn btn-primary no-print" onclick="checkExercise1()">Check Part A</button>
+
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid var(--border);">
+
+        <h3>Part B: Nuance & Clarification (Multiple Choice)</h3>
+        <p style="margin-bottom: 20px; color: var(--muted);">Patients often misunderstand their diagnoses or treatments. Choose the most accurate and empathetic response.</p>
+
+        <div class="mc-question">
+            <div class="mc-text">10. A patient asks: "Is my psoriasis contagious? Can I pass it to my baby by holding them?"</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="q10" value="A"> A. "No, it is just severe dry skin. If you use moisturizer, it won't spread."</label>
+                <label class="radio-option"><input type="radio" name="q10" value="B"> B. "No, it is an autoimmune disease, not an infection. You absolutely cannot pass it to your baby by touching them."</label>
+                <label class="radio-option"><input type="radio" name="q10" value="C"> C. "Yes, so you should be careful with close contact until the plaques clear up."</label>
+            </div>
+            <div class="feedback" id="fb10"></div>
+        </div>
+
+        <div class="mc-question">
+            <div class="mc-text">11. A patient asks about the difference between Botox and Fillers. Which analogy is best?</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="q11" value="A"> A. "Botox is like painting a wall, while Fillers are like fixing the bricks underneath."</label>
+                <label class="radio-option"><input type="radio" name="q11" value="B"> B. "Botox relaxes the muscle that causes the crease, while Fillers add volume underneath to smooth the crease out."</label>
+                <label class="radio-option"><input type="radio" name="q11" value="C"> C. "They are essentially the same medication, just manufactured by different companies."</label>
+            </div>
+            <div class="feedback" id="fb11"></div>
+        </div>
+
+        <div class="mc-question">
+            <div class="mc-text">12. A patient with Hidradenitis Suppurativa feels ashamed and says, "I shower twice a day, why do I have these dirty boils?"</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="q12" value="A"> A. "You need to switch to a stronger antibacterial soap and scrub harder."</label>
+                <label class="radio-option"><input type="radio" name="q12" value="B"> B. "This is an inflammatory disease of the hair follicles, not a hygiene issue. It is not caused by being dirty, and it's not your fault."</label>
+                <label class="radio-option"><input type="radio" name="q12" value="C"> C. "It is just severe acne that got infected, don't worry about it."</label>
+            </div>
+            <div class="feedback" id="fb12"></div>
+        </div>
+
+        <div class="mc-question">
+            <div class="mc-text">13. A patient wants a Collagen Biostimulator but thinks it's a traditional Filler. How do you explain the difference?</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="q13" value="A"> A. "Biostimulators give instant volume, while fillers take 6 months to work."</label>
+                <label class="radio-option"><input type="radio" name="q13" value="B"> B. "Fillers just sit under the skin to prop it up, but biostimulators act like seeds that encourage your body to grow its own collagen over time."</label>
+                <label class="radio-option"><input type="radio" name="q13" value="C"> C. "Biostimulators are only used for the lips, while fillers are for the cheeks."</label>
+            </div>
+            <div class="feedback" id="fb13"></div>
+        </div>
+
+        <div class="mc-question">
+            <div class="mc-text">14. A patient is diagnosed with Alopecia Areata and is terrified they are going completely bald forever. What is the most reassuring explanation?</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="q14" value="A"> A. "This is a genetic condition, so unfortunately you will definitely lose all your hair eventually."</label>
+                <label class="radio-option"><input type="radio" name="q14" value="B"> B. "This is an autoimmune reaction where your body temporarily attacks the hair roots. The follicles are still alive, and the hair often grows back."</label>
+                <label class="radio-option"><input type="radio" name="q14" value="C"> C. "It is a fungal infection from the gym, we will give you pills and it will be gone tomorrow."</label>
+            </div>
+            <div class="feedback" id="fb14"></div>
+        </div>
+        
+        <button class="btn btn-primary no-print" onclick="checkExercise1PartB()">Check Part B</button>
+    </section>
+
+    <!-- EXERCISE 2 -->
+    <section class="card">
+        <h2>Exercise 2: The Empathetic Doctor (Sentence Rephrasing)</h2>
+        <p class="objective">Objective: Rewrite clinical, textbook sentences into warm, clear, and reassuring English that a patient with zero medical background can easily understand.</p>
+        
+        <div class="vignette">
+            <div class="vignette-label">1. Clinical Statement (Androgenetic alopecia):</div>
+            <div class="vignette-text">"Your diagnosis is androgenetic alopecia. We will initiate topical minoxidil therapy."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_1')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_1">
+                <strong>Suggested:</strong> "You have a very common type of genetic hair thinning. I recommend we start using a topical liquid called minoxidil to help stimulate your hair growth."
+            </div>
+        </div>
+
+        <div class="vignette">
+            <div class="vignette-label">2. Clinical Statement (Collagen biostimulator):</div>
+            <div class="vignette-text">"We will administer a collagen biostimulator to induce neocollagenesis and improve cutaneous laxity."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_2')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_2">
+                <strong>Suggested:</strong> "I'd like to suggest an injectable treatment that won't just fill wrinkles today. Instead, it encourages your body to produce its own natural collagen over the next few months, giving your skin a firmer, more youthful look."
+            </div>
+        </div>
+
+        <div class="vignette">
+            <div class="vignette-label">3. Clinical Statement (Skin cancer / BCC):</div>
+            <div class="vignette-text">"The biopsy confirms a basal cell carcinoma, which is a skin cancer, so we must perform surgical excision."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_3')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_3">
+                <strong>Suggested:</strong> "The lab results show that the spot we looked at is a very common, highly treatable type of skin cancer. To make sure you're fully healed, we need to do a minor procedure to remove it completely."
+            </div>
+        </div>
+
+        <div class="vignette">
+            <div class="vignette-label">4. Clinical Statement (Atopic dermatitis):</div>
+            <div class="vignette-text">"Your child has atopic dermatitis. You must avoid environmental irritants and apply topical calcineurin inhibitors."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_4')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_4">
+                <strong>Suggested:</strong> "Your child has a type of eczema. We need to protect their skin from harsh soaps or rough fabrics, and I'm prescribing a gentle, non-steroid cream to calm the inflammation."
+            </div>
+        </div>
+
+        <div class="vignette">
+            <div class="vignette-label">5. Clinical Statement (Psoriasis):</div>
+            <div class="vignette-text">"You have plaque psoriasis. We will prescribe topical corticosteroids and advise liberal emollient therapy."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_5')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_5">
+                <strong>Suggested:</strong> "You have psoriasis, which causes these thick patches. I'm prescribing a medicated cream to reduce the redness, and it's very important to keep the skin heavily moisturized every day."
+            </div>
+        </div>
+
+        <div class="vignette">
+            <div class="vignette-label">6. Clinical Statement (Alopecia areata):</div>
+            <div class="vignette-text">"This is alopecia areata. It is an autoimmune etiology and spontaneous regrowth may occur."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_6')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_6">
+                <strong>Suggested:</strong> "You have a condition where the immune system gets confused and makes the hair fall out in patches. The good news is that the hair roots are still alive, and the hair often grows back on its own."
+            </div>
+        </div>
+
+        <div class="vignette">
+            <div class="vignette-label">7. Clinical Statement (Botox vs. Fillers):</div>
+            <div class="vignette-text">"We cannot use botulinum toxin for your nasolabial folds; we require hyaluronic acid dermal fillers."</div>
+            <textarea placeholder="Type your patient-friendly version here..."></textarea>
+            <button class="btn btn-secondary no-print" onclick="toggleAnswer('ans2_7')">Show Suggested Answer</button>
+            <div class="answer-box hidden" id="ans2_7">
+                <strong>Suggested:</strong> "Botox is great for relaxing muscles, but for these deep smile lines, we need to add volume back into the skin. I recommend a gel-like filler to smooth them out."
+            </div>
+        </div>
+    </section>
+
+    <!-- TEACHER UNLOCK -->
+    <section class="card no-print" id="unlock-section">
+        <h2>🔒 Teacher Access</h2>
+        <p class="objective">This section is restricted to instructors. Please enter the access code to unlock the Answer Key and Controls.</p>
+        <div style="display: flex; gap: 10px; align-items: center; margin-top: 15px; flex-wrap: wrap;">
+            <input type="password" id="access-code" placeholder="Enter access code..." style="flex: 1; min-width: 200px; padding: 12px; border: 2px solid var(--border); border-radius: 6px; font-size: 1rem;">
+            <button class="btn btn-primary" onclick="unlockTeacherSection()">Unlock</button>
+        </div>
+        <div class="feedback" id="unlock-feedback" style="margin-top: 10px;"></div>
+    </section>
+
+    <!-- ANSWER KEY & CONTROLS -->
+    <section class="card no-print hidden" id="teacher-section">
+        <h2>Teacher's Answer Key & Controls</h2>
+        <button class="btn btn-success" onclick="toggleAnswer('fullKey')">Show / Hide Full Answer Key</button>
+        <button class="btn btn-secondary" onclick="resetAll()">Reset All Exercises</button>
+        
+        <div class="hidden" id="fullKey" style="margin-top: 20px;">
+            <h3 style="margin-bottom: 10px;">Exercise 1: Part A (Matching)</h3>
+            <p>1-F (Psoriasis), 2-G (Fillers), 3-E (Botox), 4-H (Collagen biostimulator), 5-I (Androgenetic alopecia), 6-B (Hidradenitis suppurativa), 7-A (Atopic dermatitis), 8-C (Alopecia areata), 9-D (Skin cancer)</p>
+            
+            <h3 style="margin-top: 20px; margin-bottom: 10px;">Exercise 1: Part B (Multiple Choice)</h3>
+            <p>10-B, 11-B, 12-B, 13-B, 14-B</p>
+
+            <h3 style="margin-top: 20px; margin-bottom: 10px;">Exercise 2: Rephrasing</h3>
+            <p>Suggested answers for Exercise 2 are hidden beneath each question text box. Click "Show Suggested Answer" to review them.</p>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Exercise 1 Part A Logic
+    const ex1Answers = {
+        q1: 'F', q2: 'G', q3: 'E', q4: 'H', q5: 'I',
+        q6: 'B', q7: 'A', q8: 'C', q9: 'D'
+    };
+
+    function checkExercise1() {
+        let score = 0;
+        for (let i = 1; i <= 9; i++) {
+            const select = document.getElementById(`q${i}`);
+            const fb = document.getElementById(`fb${i}`);
+            const userVal = select.value;
+            const correctVal = ex1Answers[`q${i}`];
+
+            if (userVal === correctVal) {
+                fb.textContent = "✓ Correct!";
+                fb.className = "feedback correct";
+                score++;
+            } else if (userVal === "") {
+                fb.textContent = "Please select an option.";
+                fb.className = "feedback incorrect";
+            } else {
+                fb.textContent = `✗ Incorrect. The correct answer is ${correctVal}.`;
+                fb.className = "feedback incorrect";
+            }
+        }
+        alert(`Part A Score: ${score} out of 9`);
+    }
+
+    // Exercise 1 Part B Logic
+    const ex1bAnswers = { q10: 'B', q11: 'B', q12: 'B', q13: 'B', q14: 'B' };
+
+    function checkExercise1PartB() {
+        let score = 0;
+        for (let i = 10; i <= 14; i++) {
+            const selected = document.querySelector(`input[name="q${i}"]:checked`);
+            const fb = document.getElementById(`fb${i}`);
+            const correctVal = ex1bAnswers[`q${i}`];
+
+            if (!selected) {
+                fb.textContent = "Please select an option.";
+                fb.className = "feedback incorrect";
+            } else if (selected.value === correctVal) {
+                fb.textContent = "✓ Correct! Excellent patient communication.";
+                fb.className = "feedback correct";
+                score++;
+            } else {
+                fb.textContent = `✗ Incorrect. The most empathetic and accurate choice was ${correctVal}.`;
+                fb.className = "feedback incorrect";
+            }
+        }
+        alert(`Part B Score: ${score} out of 5`);
+    }
+
+    // Toggle Answer Logic
+    function toggleAnswer(id) {
+        const el = document.getElementById(id);
+        if (el.classList.contains('hidden')) {
+            el.classList.remove('hidden');
+        } else {
+            el.classList.add('hidden');
+        }
+    }
+
+    // Teacher Unlock Logic
+    function unlockTeacherSection() {
+        const codeInput = document.getElementById('access-code');
+        const feedback = document.getElementById('unlock-feedback');
+        const unlockSection = document.getElementById('unlock-section');
+        const teacherSection = document.getElementById('teacher-section');
+
+        if (codeInput.value === "1974") {
+            unlockSection.classList.add('hidden');
+            teacherSection.classList.remove('hidden');
+        } else {
+            feedback.textContent = "✗ Incorrect code. Please try again.";
+            feedback.className = "feedback incorrect";
+            codeInput.value = "";
+        }
+    }
+
+    // Reset Logic
+    function resetAll() {
+        if(confirm("Are you sure you want to reset all exercises?")) {
+            // Reset Ex 1 Part A
+            for (let i = 1; i <= 9; i++) {
+                document.getElementById(`q${i}`).value = "";
+                document.getElementById(`fb${i}`).className = "feedback";
+                document.getElementById(`fb${i}`).textContent = "";
+            }
+            // Reset Ex 1 Part B
+            document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+            for (let i = 10; i <= 14; i++) {
+                document.getElementById(`fb${i}`).className = "feedback";
+                document.getElementById(`fb${i}`).textContent = "";
+            }
+            // Reset Textareas
+            document.querySelectorAll('textarea').forEach(t => t.value = "");
+            // Hide Answers
+            document.querySelectorAll('.answer-box').forEach(el => el.classList.add('hidden'));
+            document.getElementById('fullKey').classList.add('hidden');
+        }
+    }
+</script>
+
+</body>
+</html>
